@@ -17,12 +17,17 @@
     <a class="navbar-brand" href="/">Note Taker
     </a>
     <div class="icons">
-      <i class="fas fa-save text-light save-note"></i>
-      <i class="fas fa-pen text-light new-note"></i>
+      <!--Save Button-->
+      <button type="submit" class="btn btn-success save-note"><i class="fas fa-save" aria-hidden="true"></i></button>
+      
+      <!--New Button-->
+      <button type="button" class="btn btn-success new-note"><i class="fas fa-pen new-note" aria-hidden="true"></i></button>
+  
     </div>
   </nav>
   <div class="container-fluid">
     <div class="row">
+      <!--This is where old notes go- look at ul-->
       <div class="col-4 list-container">
         <div class="card">
           <ul class="list-group">
@@ -30,12 +35,14 @@
         </div>
       </div>
       <div class="col-8">
-        <input class="note-title" placeholder="Note Title" maxlength="28" type="text">
-        <textarea class="note-textarea" placeholder="Note Text"></textarea>
+        <!--Input title-->
+        <input type="text" class="note-title" id = "noteTitle" placeholder="Note Title" maxlength="28" type="text">
+        <!--Input text area-->
+        <textarea id = "noteText" class="note-textarea" placeholder="Note Text"></textarea>
       </div>
     </div>
   </div>
-  <script src="/assets/js/index.js"></script>
+  <script src="/public/assets/js/index.js"></script>
 </body>
 
 </html>
