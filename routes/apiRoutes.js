@@ -35,12 +35,7 @@ module.exports = (app) => {
       res.json(true);
   });
 
-  app.delete("/api/index/:id", function(req, res) {
-    var filteredNotes = notes.filter(note => note.id !== (req.params.id)); 
-    writeToJsonFile(filteredNotes);
-    notes = filteredNotes;
-    res.json(true);
-});
+  
   // I added this below code so you could clear out the table while working with the functionality.
   // Don"t worry about it!
 
