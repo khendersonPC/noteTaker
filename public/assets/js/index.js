@@ -1,8 +1,10 @@
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -58,16 +60,20 @@ const renderActiveNote = () => {
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
+    
   } else {
     noteTitle.value = '';
     noteText.value = '';
+   
   }
 };
 
 const handleNoteSave = () => {
   const newNote = {
+    //id: Math.floor((Math.random()*100000)),
     title: noteTitle.value,
     text: noteText.value,
+    
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
@@ -82,7 +88,7 @@ const handleNoteDelete = (e) => {
 
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-
+  
   if (activeNote.id === noteId) {
     activeNote = {};
   }
@@ -138,7 +144,7 @@ const renderNoteList = async (notes) => {
       const delBtnEl = document.createElement('i');
       delBtnEl.classList.add(
         'fas',
-        'fa-trash-alt',
+        //'fa-trash-alt',
         'float-right',
         'text-danger',
         'delete-note'

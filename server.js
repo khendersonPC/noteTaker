@@ -6,11 +6,11 @@ const express = require('express');
 
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
-
 // Tells node that we are creating an "express" server
 
 const app = express();
 app.use(express.static('public'));
+
 // Sets an initial port. We"ll use this later in our listener
 const PORT = process.env.PORT || 8080;
 
@@ -27,7 +27,6 @@ require('./routes/htmlRoutes')(app);
 
 // LISTENER
 // The below code effectively "starts" our server
-
 app.listen(PORT, () => {
   console.log(`App listening on PORT: http://localhost:${PORT}`);
 });
