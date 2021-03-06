@@ -24,9 +24,9 @@
 * Install NPM packages--> npm install
 
 ## Usage
-![alt text](screenshot)
+![alt text](screenshot1.png)
 
-It is deployed at 
+It is deployed at https://murmuring-bayou-65149.herokuapp.com
 
 ## Contributing
 To contribute to Note Taker, follow these steps:
