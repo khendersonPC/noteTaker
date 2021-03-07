@@ -1,9 +1,10 @@
 // LOAD DATA
 // We are linking our routes to a series of "data" sources.
 // These data sources hold arrays of information on table-data, waitinglist, etc.
-
+const fs = require('fs');
 const notesData = require('../db/db.json');
-//const generateUniqueId = require('generate-unique-id');
+const generateUniqueId = require('generate-unique-id');
+
 
 
 // ROUTING
@@ -29,19 +30,33 @@ module.exports = (app) => {
     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
     // It will do this by sending out the value "true" have a table
     // req.body is available since we're using the body parsing middleware
-      req.body.id = Math.floor((Math.random()*100000));
-      notesData.push(req.body);
-      //return the new note to the client??
-      res.json(true);
+    req.body.id = generateUniqueId();
+    console.log(req.body);
+
+    notesData.push(req.body);
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesData));
+    //return the new note to the client??
+    res.json(true);
   });
 
-  
+  app.delete('/api/notes/:id', (req, res) => {
+    
+    for(var i = 0; i<notesData.length; i++){
+        if(req.params.id===notesData[i].id){
+          notesData.splice(i, 1);
+        }
+    }
+   
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesData));
+    
+    res.json(true);
+  });
   // I added this below code so you could clear out the table while working with the functionality.
   // Don"t worry about it!
 
-//   app.post('/api/clear', (req, res) => {
-//     // Empty out the arrays of data
-//     notesData.length = 0;
-//     res.json({ ok: true });
-//   });
+  //   app.post('/api/clear', (req, res) => {
+  //     // Empty out the arrays of data
+  //     notesData.length = 0;
+  //     res.json({ ok: true });
+  //   });
 };
